@@ -41,10 +41,9 @@ jobs:
         cd ~/OFRP
         sudo git clone --depth 1 --branch android-7.1.2_r37 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 /opt/toolchains/arm-eabi-4.8/
         source build/envsetup.sh
-        export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
         export ALLOW_MISSING_DEPENDENCIES=true
         export LC_ALL=C
-        export CROSS_COMPILER=/opt/toolchains/arm-eabi-4.8/bin/arm-eabi-
+        export CROSS_COMPILE=/opt/toolchains/arm-eabi-4.8/bin/arm-eabi-
         lunch omni_klte-eng
         make -j$(nproc --all) recoveryimage
         export PATH=$OLDPATH
