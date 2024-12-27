@@ -29,7 +29,7 @@ jobs:
         mkdir ~/.bin
         curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
         python3 ~/.bin/repo init --depth=1 -u https://github.com/unlegacy-devices/fox-7.1_manifest -b fox-7.1
-        git clone --branch fox-7.1 --single-branch https://gitlab.com/OrangeFox/device/klte.git ~/OFRP/device/samsung/klte
+        git clone --branch fox_7.1 --single-branch https://gitlab.com/OrangeFox/device/klte.git ~/OFRP/device/samsung/klte
         python3 ~/.bin/repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
     - name: Building OFRP
       run: |
@@ -41,6 +41,10 @@ jobs:
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         export LC_ALL=C
+        export TW_INCLUDE_CRYPTO=true
+        export TARGET_HW_DISK_ENCRYPTION=false
+        export TARGET_KEYMASTER_WAIT_FOR_QSEE=true
+        export TW_INCLUDE_NTFS_3G=false
         lunch omni_klte-eng
         make -j$(nproc --all) recoveryimage
         export PATH=$OLDPATH
