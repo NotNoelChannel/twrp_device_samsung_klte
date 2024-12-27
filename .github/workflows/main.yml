@@ -43,7 +43,7 @@ jobs:
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         export LC_ALL=C
-        export CROSS_COMPILE=/opt/toolchains/arm-eabi-4.8/bin/arm-eabi-
+        export CROSS_COMPILE=/opt/toolchains/arm-eabi-4.8/bin/
         lunch omni_klte-eng
         make -j$(nproc --all) recoveryimage
         export PATH=$OLDPATH
